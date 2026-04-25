@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dripmatiq — How To Guide</title>
-  <meta name="description" content="Step-by-step guide to setting up your closet, generating outfits, and using FitMatic in Dripmatiq." />
+  <meta name="description" content="Step-by-step walkthrough of Dripmatiq: build your closet, tune your style, and let the AI dress you every morning." />
   <style>
     :root {
       color-scheme: light dark;
@@ -17,7 +17,6 @@
       --border: #e6e6e6;
       --text: #222;
       --text-muted: #6b6b6b;
-      --accent-tab: #777;
     }
     @media (prefers-color-scheme: dark) {
       :root {
@@ -96,7 +95,7 @@
     }
     .copy h3 { margin: 0 0 8px; font-size: 16px; font-weight: 600; color: var(--gold); }
     .copy p { margin: 0 0 12px; font-size: 15px; }
-    .copy ul { margin: 8px 0 0; padding-left: 20px; }
+    .copy ul, .copy ol { margin: 8px 0 0; padding-left: 20px; }
     .copy li { font-size: 14px; padding: 2px 0; }
 
     .mockup-wrap { display: flex; justify-content: center; }
@@ -104,14 +103,14 @@
       width: 100%;
       max-width: 260px;
       background: var(--bg-mockup);
-      border-radius: 32px;
-      border: 8px solid #1a1a1a;
+      border-radius: 28px;
+      border: 6px solid #1a1a1a;
       box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
       overflow: hidden;
       position: relative;
-      aspect-ratio: 9 / 19;
+      aspect-ratio: 9 / 19.5;
     }
-    .mockup svg { display: block; width: 100%; height: 100%; }
+    .mockup img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top; }
 
     .tip {
       background: linear-gradient(135deg, rgba(201, 168, 76, 0.08), rgba(201, 168, 76, 0.02));
@@ -148,63 +147,39 @@
 <body>
   <header>
     <h1>How to Use Dripmatiq</h1>
-    <p class="lede">A 6-step walkthrough — from first launch to your first AI-styled outfit.</p>
+    <p class="lede">A 6-step walkthrough — from first launch to a closet that dresses you on autopilot.</p>
   </header>
 
   <nav class="toc" aria-label="Contents">
     <strong>In this guide</strong>
     <ol>
-      <li><a href="#step-1">Open the app & complete onboarding</a></li>
+      <li><a href="#step-1">Open the app & start onboarding</a></li>
       <li><a href="#step-2">Build your closet</a></li>
-      <li><a href="#step-3">Add a selfie for FitMatic</a></li>
-      <li><a href="#step-4">Generate an outfit</a></li>
-      <li><a href="#step-5">Try it on with FitMatic</a></li>
-      <li><a href="#step-6">Save and revisit favorites</a></li>
+      <li><a href="#step-3">Add a garment</a></li>
+      <li><a href="#step-4">Generate your first outfit</a></li>
+      <li><a href="#step-5">Tune your Style Context</a></li>
+      <li><a href="#step-6">Save favorites & unlock Pro</a></li>
     </ol>
   </nav>
 
   <!-- ────────────── STEP 1 ────────────── -->
   <section class="step" id="step-1">
-    <h2><span class="num">1</span> Open the app & complete onboarding</h2>
-    <p class="summary">A quick 3-screen setup teaches the AI your style baseline.</p>
+    <h2><span class="num">1</span> Open the app & start onboarding</h2>
+    <p class="summary">First launch lands you on a short walkthrough that explains how the AI uses your closet.</p>
     <div class="card">
       <div class="grid">
         <div class="copy">
-          <h3>What you'll set</h3>
+          <h3>What you'll see</h3>
           <ul>
-            <li><strong>Style archetype</strong> — Classic, Streetwear, Minimal, etc.</li>
-            <li><strong>Body type & gender expression</strong> — for accurate fit on FitMatic</li>
-            <li><strong>Color preferences</strong> — what you love and what to avoid</li>
+            <li>The headline <strong>"Build Your Closet Profile"</strong></li>
+            <li>A 3-step <em>How this works</em> card</li>
+            <li>A gold <strong>START CLOSET INVENTORY</strong> button</li>
           </ul>
-          <div class="tip"><strong>Tip:</strong> You can change any of this later in the <strong>🎨 STYLE</strong> tab.</div>
+          <div class="tip"><strong>Tip:</strong> swipe through the carousel dots to preview what comes next, then tap the gold button to begin.</div>
         </div>
         <div class="mockup-wrap">
           <div class="mockup">
-            <svg viewBox="0 0 220 460" xmlns="http://www.w3.org/2000/svg" aria-label="Onboarding screen mockup">
-              <rect width="220" height="460" fill="#0a0a0a"/>
-              <text x="110" y="60" text-anchor="middle" fill="#e4e4e4" font-family="sans-serif" font-size="16" font-weight="300">Welcome</text>
-              <text x="110" y="82" text-anchor="middle" fill="#888" font-family="sans-serif" font-size="10">Pick your style</text>
-              <g transform="translate(20, 110)">
-                <rect width="180" height="50" rx="10" fill="#161616" stroke="#c9a84c" stroke-width="1.5"/>
-                <text x="90" y="30" text-anchor="middle" fill="#c9a84c" font-family="sans-serif" font-size="12" font-weight="600">CLASSIC</text>
-              </g>
-              <g transform="translate(20, 175)">
-                <rect width="180" height="50" rx="10" fill="#161616" stroke="#252525"/>
-                <text x="90" y="30" text-anchor="middle" fill="#888" font-family="sans-serif" font-size="12">STREETWEAR</text>
-              </g>
-              <g transform="translate(20, 240)">
-                <rect width="180" height="50" rx="10" fill="#161616" stroke="#252525"/>
-                <text x="90" y="30" text-anchor="middle" fill="#888" font-family="sans-serif" font-size="12">MINIMAL</text>
-              </g>
-              <g transform="translate(20, 305)">
-                <rect width="180" height="50" rx="10" fill="#161616" stroke="#252525"/>
-                <text x="90" y="30" text-anchor="middle" fill="#888" font-family="sans-serif" font-size="12">PREPPY</text>
-              </g>
-              <g transform="translate(20, 390)">
-                <rect width="180" height="40" rx="20" fill="#c9a84c"/>
-                <text x="90" y="25" text-anchor="middle" fill="#1a1408" font-family="sans-serif" font-size="12" font-weight="700">CONTINUE →</text>
-              </g>
-            </svg>
+            <img src="screenshots/step1-onboarding.jpg" alt="Dripmatiq onboarding screen titled Build Your Closet Profile" loading="lazy" />
           </div>
         </div>
       </div>
@@ -214,72 +189,23 @@
   <!-- ────────────── STEP 2 ────────────── -->
   <section class="step" id="step-2">
     <h2><span class="num">2</span> Build your closet</h2>
-    <p class="summary">Add real garments so the AI styles outfits from clothes you actually own.</p>
+    <p class="summary">The <strong>CLOSET</strong> tab is where every garment you own lives, organised by category.</p>
     <div class="card">
       <div class="grid">
         <div class="mockup-wrap">
           <div class="mockup">
-            <svg viewBox="0 0 220 460" xmlns="http://www.w3.org/2000/svg" aria-label="Closet tab mockup">
-              <rect width="220" height="460" fill="#0a0a0a"/>
-              <text x="110" y="44" text-anchor="middle" fill="#e4e4e4" font-family="sans-serif" font-size="18" font-weight="300">My Closet</text>
-              <!-- category tabs -->
-              <g transform="translate(10, 64)" font-family="sans-serif" font-size="9">
-                <rect x="0" y="0" width="40" height="24" rx="12" fill="#c9a84c"/>
-                <text x="20" y="16" text-anchor="middle" fill="#1a1408" font-weight="700">👕 TOPS</text>
-                <text x="62" y="16" fill="#666">👖 BOTT</text>
-                <text x="100" y="16" fill="#666">👟 SHOES</text>
-                <text x="142" y="16" fill="#666">🧥 OUTER</text>
-                <text x="184" y="16" fill="#666">🕶️</text>
-              </g>
-              <!-- card 1 -->
-              <g transform="translate(15, 110)">
-                <rect width="190" height="60" rx="12" fill="#161616" stroke="#252525"/>
-                <rect x="8" y="8" width="44" height="44" rx="8" fill="#1f1f1f"/>
-                <text x="30" y="38" text-anchor="middle" font-size="20">👕</text>
-                <text x="62" y="26" fill="#e4e4e4" font-family="sans-serif" font-size="11" font-weight="600">Black Tee</text>
-                <text x="62" y="40" fill="#888" font-family="sans-serif" font-size="9">Black · Cotton · Uniqlo</text>
-                <circle cx="180" cy="30" r="5" fill="#000"/>
-              </g>
-              <!-- card 2 -->
-              <g transform="translate(15, 180)">
-                <rect width="190" height="60" rx="12" fill="#161616" stroke="#252525"/>
-                <rect x="8" y="8" width="44" height="44" rx="8" fill="#1f1f1f"/>
-                <text x="30" y="38" text-anchor="middle" font-size="20">👔</text>
-                <text x="62" y="26" fill="#e4e4e4" font-family="sans-serif" font-size="11" font-weight="600">White Oxford</text>
-                <text x="62" y="40" fill="#888" font-family="sans-serif" font-size="9">White · Cotton · COS</text>
-                <circle cx="180" cy="30" r="5" fill="#fff"/>
-              </g>
-              <!-- card 3 -->
-              <g transform="translate(15, 250)">
-                <rect width="190" height="60" rx="12" fill="#161616" stroke="#252525"/>
-                <rect x="8" y="8" width="44" height="44" rx="8" fill="#1f1f1f"/>
-                <text x="30" y="38" text-anchor="middle" font-size="20">👕</text>
-                <text x="62" y="26" fill="#e4e4e4" font-family="sans-serif" font-size="11" font-weight="600">Navy Polo</text>
-                <text x="62" y="40" fill="#888" font-family="sans-serif" font-size="9">Navy · Cotton · RL</text>
-                <circle cx="180" cy="30" r="5" fill="#1a2a4a"/>
-              </g>
-              <!-- FAB -->
-              <g transform="translate(160, 380)">
-                <circle cx="20" cy="20" r="22" fill="#c9a84c"/>
-                <text x="20" y="27" text-anchor="middle" fill="#1a1408" font-family="sans-serif" font-size="20" font-weight="700">+</text>
-              </g>
-              <!-- bottom tab -->
-              <rect x="0" y="430" width="220" height="30" fill="#0d0d0d"/>
-              <line x1="0" y1="430" x2="220" y2="430" stroke="#1a1a1a"/>
-              <text x="110" y="450" text-anchor="middle" fill="#c9a84c" font-family="sans-serif" font-size="9" font-weight="700">CLOSET</text>
-            </svg>
+            <img src="screenshots/step2-closet.jpg" alt="Your Closet screen with category chips and a list of bottoms" loading="lazy" />
           </div>
         </div>
         <div class="copy">
-          <h3>How to add an item</h3>
+          <h3>How it's organised</h3>
           <ol>
-            <li>Tap the <strong>👗 CLOSET</strong> tab</li>
-            <li>Pick the right category at the top (Tops, Bottoms, Shoes…)</li>
-            <li>Tap the gold <strong>+</strong> button</li>
-            <li>Snap or pick a photo, then fill in color, fabric, and brand</li>
+            <li>Pick a category chip — <kbd>Tops</kbd>, <kbd>Bottoms</kbd>, <kbd>Shoes</kbd>, <kbd>Outerwear</kbd>, <kbd>Accessories</kbd></li>
+            <li>Each item shows its <strong>color · fabric · source</strong></li>
+            <li>Tap <strong>Edit</strong>, <strong>Photo</strong>, or <strong>Delete</strong> to manage it</li>
+            <li>Tap the dashed <strong>+ Add Bottoms</strong> button at the bottom to add a new item to that category</li>
           </ol>
-          <div class="tip"><strong>Why photos matter:</strong> when an item has a photo, FitMatic uses the real garment for try-on instead of an AI guess — colors and fabric look exactly like yours.</div>
-          <div class="tip"><strong>New:</strong> photos now sync to your account, so they survive reinstalls and switching phones.</div>
+          <div class="tip"><strong>Goal:</strong> aim for at least <strong>3 tops, 3 bottoms, and 2 pairs of shoes</strong> before generating outfits — that's the minimum the AI needs for variety.</div>
         </div>
       </div>
     </div>
@@ -287,42 +213,26 @@
 
   <!-- ────────────── STEP 3 ────────────── -->
   <section class="step" id="step-3">
-    <h2><span class="num">3</span> Add a selfie for FitMatic</h2>
-    <p class="summary">Optional — but lets the try-on look like <em>you</em>, not a stock model.</p>
+    <h2><span class="num">3</span> Add a garment</h2>
+    <p class="summary">A single sheet captures everything the stylist needs to know about an item.</p>
     <div class="card">
       <div class="grid">
         <div class="copy">
-          <h3>Where to add it</h3>
+          <h3>Fill out the sheet</h3>
           <ol>
-            <li>Open the <strong>🔥 TODAY</strong> tab</li>
-            <li>Scroll to the FitMatic card</li>
-            <li>Tap <strong>"Add selfie"</strong> and pick a clear, front-facing photo</li>
+            <li><strong>Category</strong> — Tops / Bottoms / Shoes / Outerwear</li>
+            <li><strong>Garment type</strong> — Trench Coat, Puffer Jacket, Denim Jacket…</li>
+            <li><strong>Color palette</strong> — pick the dominant color</li>
+            <li><strong>Fabric</strong> — Cotton, Linen, Merino Wool, Cashmere, Silk…</li>
+            <li><strong>Brand</strong> (optional) and an <strong>Attach garment photo</strong></li>
+            <li><strong>Seasons</strong> (all / spring / summer / fall / winter) and <strong>Occasions</strong> (casual / work / date / formal / travel)</li>
           </ol>
-          <p>Best results with a well-lit headshot — eyes open, no heavy filters, plain background if possible.</p>
-          <div class="tip"><strong>Privacy:</strong> your selfie stays in your private account and is only sent to the AI render service when you tap FitMatic. See the <a href="privacy-policy.html">Privacy Policy</a>.</div>
+          <p>Tap <strong>Save Garment</strong> when you're done — it appears instantly in your closet list.</p>
+          <div class="tip"><strong>Why photos matter:</strong> attaching a real photo lets the AI render outfits with the actual garment instead of a generic icon — and your photos sync to your account, so they survive a reinstall or a new phone.</div>
         </div>
         <div class="mockup-wrap">
           <div class="mockup">
-            <svg viewBox="0 0 220 460" xmlns="http://www.w3.org/2000/svg" aria-label="Selfie picker mockup">
-              <rect width="220" height="460" fill="#0a0a0a"/>
-              <text x="110" y="44" text-anchor="middle" fill="#e4e4e4" font-family="sans-serif" font-size="18" font-weight="300">Today</text>
-              <g transform="translate(20, 80)">
-                <rect width="180" height="280" rx="16" fill="#161616" stroke="#252525"/>
-                <text x="90" y="30" text-anchor="middle" fill="#c9a84c" font-family="sans-serif" font-size="11" font-weight="700" letter-spacing="1.5">FITMATIC</text>
-                <!-- avatar circle -->
-                <circle cx="90" cy="120" r="50" fill="#1f1f1f" stroke="#c9a84c" stroke-width="2" stroke-dasharray="3 3"/>
-                <text x="90" y="130" text-anchor="middle" font-size="36">📷</text>
-                <text x="90" y="200" text-anchor="middle" fill="#888" font-family="sans-serif" font-size="10">Add a selfie to see</text>
-                <text x="90" y="214" text-anchor="middle" fill="#888" font-family="sans-serif" font-size="10">outfits on you</text>
-                <g transform="translate(40, 230)">
-                  <rect width="100" height="32" rx="16" fill="#c9a84c"/>
-                  <text x="50" y="21" text-anchor="middle" fill="#1a1408" font-family="sans-serif" font-size="11" font-weight="700">+ ADD SELFIE</text>
-                </g>
-              </g>
-              <rect x="0" y="430" width="220" height="30" fill="#0d0d0d"/>
-              <line x1="0" y1="430" x2="220" y2="430" stroke="#1a1a1a"/>
-              <text x="22" y="450" text-anchor="middle" fill="#c9a84c" font-family="sans-serif" font-size="9" font-weight="700">TODAY</text>
-            </svg>
+            <img src="screenshots/step3-add-garment.jpg" alt="Add Garment sheet showing category, garment type, color, fabric, brand, photo and season fields" loading="lazy" />
           </div>
         </div>
       </div>
@@ -331,62 +241,25 @@
 
   <!-- ────────────── STEP 4 ────────────── -->
   <section class="step" id="step-4">
-    <h2><span class="num">4</span> Generate an outfit</h2>
-    <p class="summary">Two ways to ask the AI for a new look.</p>
+    <h2><span class="num">4</span> Generate your first outfit</h2>
+    <p class="summary">The <strong>TODAY</strong> tab is your daily drop. Shake your phone or hit the gold pill to roll a new look.</p>
     <div class="card">
       <div class="grid">
         <div class="mockup-wrap">
           <div class="mockup">
-            <svg viewBox="0 0 220 460" xmlns="http://www.w3.org/2000/svg" aria-label="Today tab with outfit mockup">
-              <rect width="220" height="460" fill="#0a0a0a"/>
-              <text x="110" y="44" text-anchor="middle" fill="#e4e4e4" font-family="sans-serif" font-size="18" font-weight="300">Today</text>
-              <text x="110" y="62" text-anchor="middle" fill="#888" font-family="sans-serif" font-size="9">72°F · Sunny · Casual</text>
-              <!-- outfit card -->
-              <g transform="translate(20, 80)">
-                <rect width="180" height="270" rx="16" fill="#161616" stroke="#252525"/>
-                <text x="90" y="28" text-anchor="middle" fill="#c9a84c" font-family="sans-serif" font-size="10" font-weight="700" letter-spacing="2">EFFORTLESS</text>
-                <!-- garment grid -->
-                <g transform="translate(20, 50)">
-                  <rect width="60" height="60" rx="8" fill="#1f1f1f"/>
-                  <text x="30" y="38" text-anchor="middle" font-size="22">👕</text>
-                  <text x="30" y="78" text-anchor="middle" fill="#888" font-size="8">Top</text>
-                </g>
-                <g transform="translate(90, 50)">
-                  <rect width="60" height="60" rx="8" fill="#1f1f1f"/>
-                  <text x="30" y="38" text-anchor="middle" font-size="22">👖</text>
-                  <text x="30" y="78" text-anchor="middle" fill="#888" font-size="8">Bottom</text>
-                </g>
-                <g transform="translate(20, 130)">
-                  <rect width="60" height="60" rx="8" fill="#1f1f1f"/>
-                  <text x="30" y="38" text-anchor="middle" font-size="22">👟</text>
-                  <text x="30" y="78" text-anchor="middle" fill="#888" font-size="8">Shoes</text>
-                </g>
-                <g transform="translate(90, 130)">
-                  <rect width="60" height="60" rx="8" fill="#1f1f1f"/>
-                  <text x="30" y="38" text-anchor="middle" font-size="22">🕶️</text>
-                  <text x="30" y="78" text-anchor="middle" fill="#888" font-size="8">Accessory</text>
-                </g>
-                <g transform="translate(20, 222)">
-                  <rect width="140" height="36" rx="18" fill="#c9a84c"/>
-                  <text x="70" y="23" text-anchor="middle" fill="#1a1408" font-family="sans-serif" font-size="11" font-weight="700">✨ NEW OUTFIT</text>
-                </g>
-              </g>
-              <!-- shake hint -->
-              <text x="110" y="380" text-anchor="middle" fill="#666" font-family="sans-serif" font-size="9" font-style="italic">📱 or shake your phone</text>
-              <rect x="0" y="430" width="220" height="30" fill="#0d0d0d"/>
-              <line x1="0" y1="430" x2="220" y2="430" stroke="#1a1a1a"/>
-              <text x="22" y="450" text-anchor="middle" fill="#c9a84c" font-family="sans-serif" font-size="9" font-weight="700">TODAY</text>
-            </svg>
+            <img src="screenshots/step4-outfit.jpg" alt="Today's Drip screen with a Minimalist Edgy outfit and Why This Outfit explanation" loading="lazy" />
           </div>
         </div>
         <div class="copy">
-          <h3>Two ways to generate</h3>
+          <h3>What's on the screen</h3>
           <ul>
-            <li>📱 <strong>Shake your phone</strong> — fastest way to roll a new look</li>
-            <li>✨ <strong>Tap the gold button</strong> on the Today tab</li>
+            <li><strong>SHAKE TO RANDOMIZE</strong> — physically shake the phone for a new fit, or tap the pill</li>
+            <li>An outfit name and a <strong>% MATCH</strong> score</li>
+            <li>The garments — pulled straight from <em>your</em> closet</li>
+            <li>A <strong>WHY THIS OUTFIT</strong> card explaining the AI's reasoning, with weather, season and occasion context</li>
+            <li><strong>← Previous Outfit</strong> to step back to the last roll</li>
           </ul>
-          <p>Each outfit considers your local weather, the time of day, and the occasion you've selected.</p>
-          <div class="tip"><strong>Need a different vibe?</strong> Tap the occasion chip (Casual / Work / Date / Formal) at the top to re-roll for that context.</div>
+          <div class="tip"><strong>Counter at the top</strong> ("1154 of 1200 suggestions left this month") shows your monthly fair-use budget for your current plan.</div>
         </div>
       </div>
     </div>
@@ -394,60 +267,24 @@
 
   <!-- ────────────── STEP 5 ────────────── -->
   <section class="step" id="step-5">
-    <h2><span class="num">5</span> Try it on with FitMatic</h2>
-    <p class="summary">See the outfit rendered on a model — or on you, if you added a selfie.</p>
+    <h2><span class="num">5</span> Tune your Style Context</h2>
+    <p class="summary">The <strong>STYLE</strong> tab is the dial-board that personalises every outfit the engine produces.</p>
     <div class="card">
       <div class="grid">
         <div class="copy">
-          <h3>How it works</h3>
-          <ol>
-            <li>Generate an outfit on the Today tab</li>
-            <li>Tap the <strong>🪞 FITMATIC</strong> button</li>
-            <li>Wait ~15–30 seconds while the AI renders the look</li>
-          </ol>
-          <p>If your outfit includes sunglasses, FitMatic now correctly swaps any glasses you're wearing in your selfie for the requested shades — without changing your face.</p>
-          <div class="tip"><strong>Pro &amp; Elite plans:</strong> get higher render quality, more monthly try-ons, and the ability to chain multiple garments per render.</div>
+          <h3>What you can tune</h3>
+          <ul>
+            <li><strong>Color Palette</strong> — pick the colors you actually want this outfit built around</li>
+            <li><strong>Body Type Fit</strong> — bias cuts and silhouettes for your shape</li>
+            <li><strong>Skin Tone Harmony</strong> — bias palette recommendations for your complexion</li>
+            <li><strong>Trend Awareness</strong> — choose <em>timeless</em>, <em>balanced</em>, or <em>trend-forward</em></li>
+          </ul>
+          <p>Each card has a toggle on the right — flip it off and that signal is ignored for the next roll.</p>
+          <div class="tip"><strong>Plan tags:</strong> cards marked <strong>DRIP PRO</strong> or <strong>DRIP ELITE</strong> require the matching subscription — see step 6.</div>
         </div>
         <div class="mockup-wrap">
           <div class="mockup">
-            <svg viewBox="0 0 220 460" xmlns="http://www.w3.org/2000/svg" aria-label="FitMatic result mockup">
-              <rect width="220" height="460" fill="#0a0a0a"/>
-              <text x="110" y="44" text-anchor="middle" fill="#c9a84c" font-family="sans-serif" font-size="11" font-weight="700" letter-spacing="2">FITMATIC RESULT</text>
-              <!-- "rendered" preview -->
-              <g transform="translate(40, 70)">
-                <rect width="140" height="280" rx="14" fill="url(#grad)"/>
-                <defs>
-                  <linearGradient id="grad" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0" stop-color="#1a1a1a"/>
-                    <stop offset="1" stop-color="#0d0d0d"/>
-                  </linearGradient>
-                </defs>
-                <!-- silhouette -->
-                <circle cx="70" cy="60" r="22" fill="#3a3a3a"/>
-                <rect x="50" y="84" width="40" height="6" fill="#1a1a1a"/>
-                <!-- sunglasses -->
-                <rect x="56" y="52" width="28" height="10" rx="3" fill="#000"/>
-                <line x1="70" y1="56" x2="70" y2="56" stroke="#3a3a3a"/>
-                <!-- shirt -->
-                <path d="M 40 90 L 100 90 L 110 160 L 30 160 Z" fill="#2a2a2a"/>
-                <!-- pants -->
-                <rect x="42" y="160" width="56" height="80" fill="#1a1f2a"/>
-                <!-- shoes -->
-                <ellipse cx="55" cy="248" rx="14" ry="6" fill="#fff"/>
-                <ellipse cx="85" cy="248" rx="14" ry="6" fill="#fff"/>
-              </g>
-              <g transform="translate(40, 370)">
-                <rect width="65" height="32" rx="16" fill="#161616" stroke="#c9a84c"/>
-                <text x="32" y="21" text-anchor="middle" fill="#c9a84c" font-family="sans-serif" font-size="10" font-weight="700">SAVE</text>
-              </g>
-              <g transform="translate(115, 370)">
-                <rect width="65" height="32" rx="16" fill="#c9a84c"/>
-                <text x="32" y="21" text-anchor="middle" fill="#1a1408" font-family="sans-serif" font-size="10" font-weight="700">REROLL</text>
-              </g>
-              <rect x="0" y="430" width="220" height="30" fill="#0d0d0d"/>
-              <line x1="0" y1="430" x2="220" y2="430" stroke="#1a1a1a"/>
-              <text x="22" y="450" text-anchor="middle" fill="#c9a84c" font-family="sans-serif" font-size="9" font-weight="700">TODAY</text>
-            </svg>
+            <img src="screenshots/step5-style.jpg" alt="Style Context screen with toggles for Color Palette, Body Type Fit, Skin Tone Harmony and Trend Awareness" loading="lazy" />
           </div>
         </div>
       </div>
@@ -456,51 +293,29 @@
 
   <!-- ────────────── STEP 6 ────────────── -->
   <section class="step" id="step-6">
-    <h2><span class="num">6</span> Save and revisit favorites</h2>
-    <p class="summary">Build a personal lookbook of outfits that worked.</p>
+    <h2><span class="num">6</span> Save favorites & unlock Pro</h2>
+    <p class="summary">Tap the heart on any outfit you love — it lives forever in <strong>MY DRIPS</strong>.</p>
     <div class="card">
       <div class="grid">
         <div class="mockup-wrap">
           <div class="mockup">
-            <svg viewBox="0 0 220 460" xmlns="http://www.w3.org/2000/svg" aria-label="Saved outfits mockup">
-              <rect width="220" height="460" fill="#0a0a0a"/>
-              <text x="110" y="44" text-anchor="middle" fill="#e4e4e4" font-family="sans-serif" font-size="18" font-weight="300">Saved</text>
-              <text x="110" y="62" text-anchor="middle" fill="#888" font-family="sans-serif" font-size="9">Your lookbook · 12 fits</text>
-              <!-- grid of saved -->
-              <g transform="translate(15, 80)">
-                <rect width="85" height="120" rx="10" fill="#161616" stroke="#252525"/>
-                <text x="42" y="65" text-anchor="middle" font-size="32">🧥</text>
-                <text x="42" y="100" text-anchor="middle" fill="#c9a84c" font-size="8" font-weight="700">SMART</text>
-              </g>
-              <g transform="translate(115, 80)">
-                <rect width="85" height="120" rx="10" fill="#161616" stroke="#252525"/>
-                <text x="42" y="65" text-anchor="middle" font-size="32">👕</text>
-                <text x="42" y="100" text-anchor="middle" fill="#c9a84c" font-size="8" font-weight="700">CASUAL</text>
-              </g>
-              <g transform="translate(15, 215)">
-                <rect width="85" height="120" rx="10" fill="#161616" stroke="#252525"/>
-                <text x="42" y="65" text-anchor="middle" font-size="32">👔</text>
-                <text x="42" y="100" text-anchor="middle" fill="#c9a84c" font-size="8" font-weight="700">WORK</text>
-              </g>
-              <g transform="translate(115, 215)">
-                <rect width="85" height="120" rx="10" fill="#161616" stroke="#252525"/>
-                <text x="42" y="65" text-anchor="middle" font-size="32">🕶️</text>
-                <text x="42" y="100" text-anchor="middle" fill="#c9a84c" font-size="8" font-weight="700">DATE</text>
-              </g>
-              <rect x="0" y="430" width="220" height="30" fill="#0d0d0d"/>
-              <line x1="0" y1="430" x2="220" y2="430" stroke="#1a1a1a"/>
-              <text x="110" y="450" text-anchor="middle" fill="#c9a84c" font-family="sans-serif" font-size="9" font-weight="700">SAVED</text>
-            </svg>
+            <img src="screenshots/step6-saved.jpg" alt="Your Favorites screen listing saved outfits with match percentages and starred status" loading="lazy" />
           </div>
         </div>
         <div class="copy">
-          <h3>Saving an outfit</h3>
+          <h3>Your lookbook</h3>
           <ol>
-            <li>Tap the heart or <strong>SAVE</strong> button on any generated look</li>
-            <li>Find it later in the <strong>❤️ SAVED</strong> tab</li>
-            <li>Tap any saved outfit to re-render with FitMatic or share</li>
+            <li>Tap the heart on any outfit on the Today tab</li>
+            <li>Open the <strong>❤️ MY DRIPS</strong> tab to see every saved fit</li>
+            <li>Each card shows the outfit name, <strong>% MATCH</strong>, the engine that built it, and the garments</li>
           </ol>
-          <div class="tip"><strong>Mark as worn:</strong> tap "I wore this" so the AI learns what you reach for and stops repeating fits too often.</div>
+          <h3 style="margin-top:18px;">Want more rolls?</h3>
+          <ul>
+            <li><strong>DRIP FREE</strong> — 5 outfit suggestions / month, basic weather sync, up to 20 wardrobe items</li>
+            <li><strong>DRIP PRO</strong> ($6.99/mo) — 400 suggestions / month, 10 smart parameters, AI style learning, no ads</li>
+            <li><strong>DRIP ELITE</strong> ($10.99/mo) — 1200 suggestions / month, personal AI style twin, exclusive brand drops, IRL stylist 1×/month, VIP priority support</li>
+          </ul>
+          <div class="tip"><strong>7-day free trial</strong> on paid plans — cancel anytime from the <strong>⭐ PRO</strong> tab.</div>
         </div>
       </div>
     </div>
@@ -512,11 +327,11 @@
     <p class="summary">Small habits that make Dripmatiq much smarter.</p>
     <div class="card">
       <ul style="padding-left: 20px;">
-        <li><strong>Add at least 3 tops, 2 bottoms, and 1 pair of shoes</strong> before generating — the AI needs a minimum set to mix and match.</li>
-        <li><strong>Take photos in natural light</strong> against a plain background so colors register accurately.</li>
-        <li><strong>Use the Style tab</strong> to toggle weather, season, and occasion as factors in outfit generation.</li>
-        <li><strong>Don't like a suggestion?</strong> Just shake again — every roll is free. The AI never repeats the exact same outfit twice in a row.</li>
-        <li><strong>Going on a trip?</strong> Set a destination on the Today tab to plan looks for the local weather there.</li>
+        <li><strong>Photograph items in natural light</strong> on a plain background so the AI registers colors accurately.</li>
+        <li><strong>Don't like a roll? Just shake again</strong> — every roll counts against your monthly budget but the engine never repeats the exact same outfit twice in a row.</li>
+        <li><strong>Use the Style tab</strong> to flip on Body Type Fit and Skin Tone Harmony — that's where personalisation gets noticeably sharper.</li>
+        <li><strong>Tag occasions honestly</strong> when you add garments — "casual" vs "formal" decides which items are eligible for which fits.</li>
+        <li><strong>Star outfits you actually wore</strong> in MY DRIPS so the AI learns your real-world preferences over time.</li>
       </ul>
     </div>
   </section>
