@@ -1,0 +1,27 @@
+---
+const features = [
+  { icon: '🪄', title: 'AI Stylist', description: 'Personalized outfit suggestions that learn your taste over time.' },
+  { icon: '👗', title: 'Virtual Try-On', description: 'See how pieces look together before you get dressed.' },
+  { icon: '📅', title: 'Daily Outfits', description: 'Fresh looks every morning tailored to your calendar and weather.' },
+  { icon: '📸', title: 'Closet Scanner', description: 'Photograph garments and auto-tag color, category, and season.' },
+  { icon: '🎨', title: 'Color Matching', description: 'AI pairs colors based on your palette preferences.' },
+  { icon: '🔒', title: 'Privacy First', description: 'Your wardrobe data stays on-device. No selling, no sharing.' },
+];
+---
+
+<section class="py-20 sm:py-28">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <p class="text-xs font-bold tracking-wide uppercase text-gold text-center mb-3">Features</p>
+    <h2 class="text-h2 font-light text-center mb-16">What you get.</h2>
+
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-6 lg:gap-8">
+      {features.map((f) => (
+        <div class="bg-surface-secondary border border-border rounded-card p-6 hover:border-border-active transition-colors duration-200">
+          <span class="text-3xl mb-4 block">{f.icon}</span>
+          <h3 class="font-bold text-base mb-2">{f.title}</h3>
+          <p class="text-content-secondary text-sm leading-relaxed">{f.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
