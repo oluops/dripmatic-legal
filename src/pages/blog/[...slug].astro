@@ -1,0 +1,209 @@
+---
+import Base from '../../layouts/Base.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import { getCollection } from 'astro:content';
+import type { GetStaticPaths } from 'astro';
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+};
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+const siteUrl = 'https://dripmatiq.app';
+const postUrl = `${siteUrl}/blog/${post.slug}/`;
+const heroSrc = post.data.heroImage || `/blog/${post.slug}/hero.svg`;
+const heroFull = post.data.heroImage
+  ? new URL(post.data.heroImage, siteUrl).href
+  : `${siteUrl}/blog/${post.slug}/hero.svg`;
+
+// Reading time estimate
+const words = post.body?.split(/\s+/).length || 0;
+const readingTime = Math.max(1, Math.ceil(words / 250));
+
+// Related posts by tag overlap
+const allPosts = await getCollection('blog');
+const related = allPosts
+  .filter((p) => p.slug !== post.slug)
+  .map((p) => ({
+    ...p,
+    overlap: p.data.tags.filter((t: string) => post.data.tags.includes(t)).length,
+  }))
+  .filter((p) => p.overlap > 0)
+  .sort((a, b) => b.overlap - a.overlap)
+  .slice(0, 3);
+
+const pubDateISO = post.data.pubDate.toISOString();
+const pubDateFormatted = post.data.pubDate.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+
+// JSON-LD BlogPosting
+const blogPostingLd = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: post.data.title,
+  description: post.data.description,
+  image: heroFull,
+  datePublished: pubDateISO,
+  dateModified: post.data.updatedDate?.toISOString() || pubDateISO,
+  author: {
+    '@type': 'Organization',
+    name: 'Dripmatiq',
+    url: siteUrl,
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'Dripmatiq',
+    url: siteUrl,
+    logo: { '@type': 'ImageObject', url: `${siteUrl}/assets/icon.png` },
+  },
+  mainEntityOfPage: { '@type': 'WebPage', '@id': postUrl },
+});
+
+const appStoreUrl =
+  'https://apps.apple.com/app/dripmatiq/id6743753909?utm_source=web&utm_medium=cta&utm_campaign=blog';
+const twitterShareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(post.data.title)}&url=${encodeURIComponent(postUrl)}`;
+const pinterestShareUrl = `https://pinterest.com/pin/create/button/?url=${encodeURIComponent(postUrl)}&description=${encodeURIComponent(post.data.title)}`;
+---
+
+<Base
+  title={`${post.data.title} — Dripmatiq`}
+  description={post.data.description}
+  ogImage={heroFull}
+  ogType="article"
+  canonicalUrl={postUrl}
+  jsonLd={blogPostingLd}
+>
+  <Nav />
+  <main class="pt-24 pb-16 px-4 sm:px-6">
+    <article class="max-w-3xl mx-auto">
+      <!-- Top CTA -->
+      <div class="mb-8 p-4 rounded-card bg-surface-elevated border border-border text-center">
+        <p class="text-sm text-content-secondary mb-2">Style your closet with AI</p>
+        <a
+          href={appStoreUrl}
+          class="inline-flex items-center gap-2 bg-gold hover:bg-gold-hover text-surface-primary font-bold text-sm px-5 py-2.5 rounded-btn tracking-button transition-colors duration-200"
+        >
+          Try Dripmatiq Free
+        </a>
+      </div>
+
+      <!-- Hero image -->
+      <div class="overflow-hidden rounded-card mb-8">
+        <img
+          src={heroSrc}
+          alt={post.data.heroAlt || post.data.title}
+          width="1200"
+          height="630"
+          class="w-full aspect-[1200/630] object-cover"
+        />
+      </div>
+
+      <!-- Meta -->
+      <div class="flex flex-wrap items-center gap-4 text-sm text-content-muted mb-6">
+        <time datetime={pubDateISO}>{pubDateFormatted}</time>
+        <span>·</span>
+        <span>{readingTime} min read</span>
+      </div>
+
+      <!-- Tags -->
+      <div class="flex flex-wrap gap-2 mb-8">
+        {post.data.tags.map((tag: string) => (
+          <span class="text-xs uppercase tracking-wide text-gold bg-surface-elevated px-2 py-0.5 rounded-sm">
+            {tag}
+          </span>
+        ))}
+      </div>
+
+      <!-- Content -->
+      <div class="prose prose-invert prose-gold max-w-none
+        prose-headings:text-content-primary prose-headings:font-bold
+        prose-h1:text-hero prose-h1:font-light
+        prose-h2:text-h2 prose-h2:mt-12 prose-h2:mb-4
+        prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3
+        prose-p:text-content-primary prose-p:leading-relaxed
+        prose-a:text-gold prose-a:underline hover:prose-a:text-gold-hover
+        prose-strong:text-content-primary
+        prose-ul:text-content-primary prose-ol:text-content-primary
+        prose-li:marker:text-gold
+        prose-blockquote:border-l-gold prose-blockquote:text-content-secondary
+        prose-img:rounded-card">
+        <Content />
+      </div>
+
+      <!-- Social share -->
+      <div class="flex items-center gap-4 mt-12 pt-8 border-t border-border">
+        <span class="text-sm text-content-muted">Share:</span>
+        <a
+          href={twitterShareUrl}
+          target="_blank"
+          rel="noopener"
+          class="text-sm text-content-secondary hover:text-gold transition-colors"
+        >
+          Twitter / X
+        </a>
+        <a
+          href={pinterestShareUrl}
+          target="_blank"
+          rel="noopener"
+          class="text-sm text-content-secondary hover:text-gold transition-colors"
+        >
+          Pinterest
+        </a>
+        <button
+          data-copy-url={postUrl}
+          class="text-sm text-content-secondary hover:text-gold transition-colors cursor-pointer"
+          onclick="navigator.clipboard.writeText(this.dataset.copyUrl);this.textContent='Copied!';setTimeout(()=>this.textContent='Copy link',2000)"
+        >
+          Copy link
+        </button>
+      </div>
+
+      <!-- Bottom CTA -->
+      <div class="mt-12 p-6 rounded-card bg-surface-elevated border border-border text-center">
+        <p class="text-lg font-bold mb-2">Your closet, styled by AI.</p>
+        <p class="text-content-secondary mb-4">See what you already own in a whole new way.</p>
+        <a
+          href={appStoreUrl}
+          class="inline-flex items-center gap-2 bg-gold hover:bg-gold-hover text-surface-primary font-bold text-sm px-6 py-3 rounded-btn tracking-button transition-colors duration-200"
+        >
+          Download Dripmatiq Free
+        </a>
+      </div>
+
+      <!-- Related posts -->
+      {related.length > 0 && (
+        <div class="mt-16">
+          <h2 class="text-h2 font-bold mb-8">Keep reading</h2>
+          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {related.map((r) => (
+              <a href={`/blog/${r.slug}/`} class="group block">
+                <div class="overflow-hidden rounded-card mb-3">
+                  <img
+                    src={r.data.heroImage || `/blog/${r.slug}/hero.svg`}
+                    alt={r.data.heroAlt || r.data.title}
+                    width="600"
+                    height="315"
+                    loading="lazy"
+                    class="w-full aspect-[1200/630] object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                  />
+                </div>
+                <h3 class="font-bold group-hover:text-gold transition-colors">{r.data.title}</h3>
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+    </article>
+  </main>
+  <Footer />
+</Base>

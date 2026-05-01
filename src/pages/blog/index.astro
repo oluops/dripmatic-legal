@@ -1,0 +1,82 @@
+---
+import Base from '../../layouts/Base.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+const allTags = [...new Set(posts.flatMap((p) => p.data.tags))].sort();
+---
+
+<Base
+  title="Blog — Dripmatiq"
+  description="Style tips, wardrobe hacks, and AI-powered outfit advice from the Dripmatiq team."
+>
+  <Nav />
+  <main class="pt-24 pb-16 px-4 sm:px-6 max-w-6xl mx-auto">
+    <h1 class="text-hero font-light mb-4">The Dripmatiq Blog</h1>
+    <p class="text-content-secondary text-lg mb-12 max-w-2xl">
+      Style strategy, wardrobe science, and the occasional outfit epiphany.
+    </p>
+
+    <div class="lg:grid lg:grid-cols-[1fr_240px] lg:gap-12">
+      <!-- Post list -->
+      <div class="space-y-10">
+        {posts.map((post) => {
+          const href = `/blog/${post.slug}/`;
+          const heroSrc = post.data.heroImage || `/blog/${post.slug}/hero.svg`;
+          return (
+            <article class="group">
+              <a href={href} class="block">
+                <div class="overflow-hidden rounded-card mb-4">
+                  <img
+                    src={heroSrc}
+                    alt={post.data.heroAlt || post.data.title}
+                    width="1200"
+                    height="630"
+                    loading="lazy"
+                    class="w-full aspect-[1200/630] object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                  />
+                </div>
+                <div class="flex flex-wrap gap-2 mb-2">
+                  {post.data.tags.map((tag: string) => (
+                    <span class="text-xs uppercase tracking-wide text-gold bg-surface-elevated px-2 py-0.5 rounded-sm">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                <h2 class="text-h2 font-bold mb-2 group-hover:text-gold transition-colors duration-200">
+                  {post.data.title}
+                </h2>
+                <p class="text-content-secondary mb-2">{post.data.description}</p>
+                <time datetime={post.data.pubDate.toISOString()} class="text-sm text-content-muted">
+                  {post.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                </time>
+              </a>
+            </article>
+          );
+        })}
+      </div>
+
+      <!-- Tag sidebar -->
+      <aside class="hidden lg:block">
+        <div class="sticky top-24">
+          <h3 class="text-xs uppercase tracking-wide text-content-muted mb-4">Topics</h3>
+          <ul class="space-y-2">
+            {allTags.map((tag) => (
+              <li>
+                <span class="text-sm text-content-secondary hover:text-gold cursor-default transition-colors">
+                  {tag}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </main>
+  <Footer />
+</Base>
