@@ -1,0 +1,71 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Nav from '../../../components/Nav.astro';
+import Footer from '../../../components/Footer.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  const tags = [...new Set(posts.flatMap((p) => p.data.tags))];
+  return tags.map((tag) => ({
+    params: { tag },
+    props: {
+      tag,
+      posts: posts
+        .filter((p) => p.data.tags.includes(tag))
+        .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()),
+    },
+  }));
+}
+
+const { tag, posts } = Astro.props;
+---
+
+<Base
+  title={`${tag} — Dripmatiq Blog`}
+  description={`Articles tagged "${tag}" on the Dripmatiq blog.`}
+>
+  <Nav />
+  <main class="pt-24 pb-16 px-4 sm:px-6 max-w-6xl mx-auto">
+    <a href="/blog" class="text-sm text-content-muted hover:text-gold transition-colors mb-6 inline-block">&larr; All posts</a>
+    <h1 class="text-hero font-light mb-12">Posts tagged &ldquo;{tag}&rdquo;</h1>
+
+    <div class="space-y-10 max-w-3xl">
+      {posts.map((post) => {
+        const href = `/blog/${post.slug}/`;
+        const heroSrc = post.data.heroImage || `/blog/${post.slug}/hero.svg`;
+        return (
+          <article class="group">
+            <a href={href} class="block">
+              <div class="overflow-hidden rounded-card mb-4">
+                <img
+                  src={heroSrc}
+                  alt={post.data.heroAlt || post.data.title}
+                  width="1200"
+                  height="630"
+                  loading="lazy"
+                  class="w-full aspect-[1200/630] object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                />
+              </div>
+              <div class="flex flex-wrap gap-2 mb-2">
+                {post.data.tags.map((t: string) => (
+                  <span class="text-xs uppercase tracking-wide text-gold bg-surface-elevated px-2 py-0.5 rounded-sm">
+                    {t}
+                  </span>
+                ))}
+              </div>
+              <h2 class="text-h2 font-bold mb-2 group-hover:text-gold transition-colors duration-200">
+                {post.data.title}
+              </h2>
+              <p class="text-content-secondary mb-2">{post.data.description}</p>
+              <time datetime={post.data.pubDate.toISOString()} class="text-sm text-content-muted">
+                {post.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+              </time>
+            </a>
+          </article>
+        );
+      })}
+    </div>
+  </main>
+  <Footer />
+</Base>

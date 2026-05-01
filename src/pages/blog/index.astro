@@ -68,9 +68,9 @@ const allTags = [...new Set(posts.flatMap((p) => p.data.tags))].sort();
           <ul class="space-y-2">
             {allTags.map((tag) => (
               <li>
-                <span class="text-sm text-content-secondary hover:text-gold cursor-default transition-colors">
+                <a href={`/blog/tag/${tag}/`} class="text-sm text-content-secondary hover:text-gold transition-colors">
                   {tag}
-                </span>
+                </a>
               </li>
             ))}
           </ul>
