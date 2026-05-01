@@ -17,7 +17,7 @@
 </head>
 <body>
   <h1>Privacy Policy</h1>
-  <p class="updated">Last updated: March 15, 2026</p>
+  <p class="updated">Last updated: April 30, 2026</p>
 
   <p>Dripmatiq ("we", "us", or "our") operates the Dripmatiq mobile application (the "App"). This Privacy Policy explains how we collect, use, and protect your personal information when you use our App.</p>
 
@@ -41,23 +41,40 @@
   <h2>3. AI Processing</h2>
   <p>For Pro and Elite subscribers, outfit suggestions are generated using a third-party AI model (via OpenRouter). We send your wardrobe item metadata and active style parameters to the AI service. We do not send photos, your name, email, or location coordinates to the AI provider. The AI provider does not retain your data after processing.</p>
 
+  <h3>3a. AI Image Generation (FASHN AI)</h3>
+  <p><strong>Processor disclosure.</strong> For AI outfit visualization, selfie photos and closet item photos you upload are sent to <a href="https://fashn.ai">FASHN AI</a> (a third-party AI image generation service) via their API. FASHN processes images server-side and returns generated outfit images. FASHN does not persistently store your input images; input image URLs are logged as request metadata but the image data itself is not retained by FASHN. Generated output images are temporarily available on FASHN's CDN for up to 72 hours, after which they are automatically deleted. For full details, see <a href="https://docs.fashn.ai/api-overview/data-retention-privacy">FASHN's Data Retention &amp; Privacy policy</a>.</p>
+  <p><strong>Generated image storage.</strong> AI-generated outfit images are stored in Supabase Storage under your user account. You can delete generated images at any time via the Account screen in the App. Deleting your account permanently purges all generated images associated with your account.</p>
+  <p><strong>Biometric note.</strong> A selfie photo is used by FASHN's <code>face_reference</code> mode to preserve your facial identity in generated outfit images. Dripmatiq does <em>not</em> extract, store, or process facial embeddings or biometric templates. We do not use facial data for identification or authentication purposes. We do not retain biometric identifiers or biometric information as defined under the Illinois Biometric Information Privacy Act (BIPA) or the California Consumer Privacy Act (CCPA).</p>
+
   <h2>4. Data Sharing</h2>
   <p>We do not sell your personal data. We share information only with:</p>
   <ul>
-    <li><strong>Supabase</strong> — database hosting and authentication.</li>
+    <li><strong>Supabase</strong> — database hosting, authentication, and file storage.</li>
+    <li><strong>FASHN AI</strong> — AI image generation (receives selfie and garment photos for outfit visualization; see Section 3a).</li>
     <li><strong>RevenueCat</strong> — subscription management (receives only an anonymous user ID).</li>
     <li><strong>OpenRouter / AI providers</strong> — outfit generation (receives only anonymised wardrobe metadata).</li>
     <li><strong>OpenWeatherMap</strong> — weather data (receives only geographic coordinates, not linked to your account).</li>
-    <li><strong>Apple / Google</strong> — payment processing for in-app purchases.</li>
+    <li><strong>Apple</strong> — App Store distribution and payment processing for in-app purchases.</li>
+    <li><strong>Google</strong> — Play Store distribution, Closed Testing, and payment processing for in-app purchases.</li>
   </ul>
 
-  <h2>5. Data Storage &amp; Security</h2>
+  <h2>5. Data Categories Collected</h2>
+  <p>The following categories of data are collected or processed by the App:</p>
+  <ul>
+    <li><strong>Email address</strong> — for account creation and transactional emails.</li>
+    <li><strong>Photos</strong> — selfie photos, closet/garment item photos, and AI-generated outfit images.</li>
+    <li><strong>Coarse location</strong> — only if you enable weather-based outfit context; used to fetch local weather conditions.</li>
+    <li><strong>Purchase history</strong> — subscription purchase events processed through RevenueCat and the platform app store.</li>
+    <li><strong>Diagnostics</strong> — crash data and performance metrics for app stability.</li>
+  </ul>
+
+  <h2>6. Data Storage &amp; Security</h2>
   <p>Your data is stored in Supabase-managed PostgreSQL databases with Row Level Security (RLS) ensuring only you can access your own records. All data is transmitted over TLS/HTTPS. Wardrobe photos are stored in private, authenticated storage buckets.</p>
 
-  <h2>6. Data Retention</h2>
+  <h2>7. Data Retention</h2>
   <p>We retain your account data for as long as your account is active. You may delete your account and all associated data at any time by contacting us at <a href="mailto:support@dripmatiq.app">support@dripmatiq.app</a>.</p>
 
-  <h2>7. Your Rights</h2>
+  <h2>8. Your Rights</h2>
   <p>Depending on your jurisdiction, you may have the right to:</p>
   <ul>
     <li>Access, correct, or delete your personal data.</li>
@@ -66,13 +83,13 @@
     <li>Opt out of non-essential analytics.</li>
   </ul>
 
-  <h2>8. Children's Privacy</h2>
+  <h2>9. Children's Privacy</h2>
   <p>The App is not intended for children under 13. We do not knowingly collect data from children under 13. If we learn we have collected such data, we will delete it promptly.</p>
 
-  <h2>9. Changes to This Policy</h2>
+  <h2>10. Changes to This Policy</h2>
   <p>We may update this Privacy Policy from time to time. We will notify you of material changes through the App or via email. Continued use of the App after changes constitutes acceptance of the updated policy.</p>
 
-  <h2>10. Contact Us</h2>
+  <h2>11. Contact Us</h2>
   <p>If you have questions about this Privacy Policy, contact us at:<br />
   <a href="mailto:support@dripmatiq.app">support@dripmatiq.app</a></p>
 </body>
